@@ -1,0 +1,19 @@
+{
+    "menu_listesi":[
+        {
+            "menu_adi" : "Soslar"
+        },
+        {
+            "menu_adi" : "Tatlılar"
+        },
+        {
+            "menu_adi" : "Ev Yemekleri "
+        },
+        {
+            "menu_adi" : "Günlük Menüler "
+        },
+        {
+            "menu_adi" : "Çorbalar "
+        }
+        ]
+}

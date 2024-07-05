@@ -1,0 +1,10 @@
+{
+    "restaurants_webelements":[
+        {
+            "restoran_location" : "//a[@href='/yemek/sarmasik-kebap-doner-et-lokantasi-sancaktepe-sarigazi-mah-st-1bb70']"
+        },
+        {
+            "restoran_location" :"//a[@href='/yemek/66-burger-sancaktepe-meclis-mah-st-1dfa4']"
+        }
+    ]
+}
