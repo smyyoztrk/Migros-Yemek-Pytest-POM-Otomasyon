@@ -21,17 +21,10 @@ class TestCart:
     def test_add_to_cart(self):
         anasayfa = Anasayfa(self.driver)
         restaurant = Restaurant(self.driver)
-        #bu satırları en son ekledim
-        anasayfa.adres_arama_cubuguna_adres_gir()
-        anasayfa.anasayfada_restoran_arat("sarmaşık kebap")
-
-        anasayfa.restoran_sec_sarmasik_cart_sayfasi_icin()
        
-        
         menu_webelement = restaurant.menu_sayfasinin_yazisini_ver()
         assert menu_webelement.is_displayed()
 
-       
         urunler_liste = restaurant.varsayilan_urunler_liste_ver()
         sepete_eklenen_urun_adi = urunler_liste[2].text
         urunler_liste[2].click()
@@ -54,16 +47,6 @@ class TestCart:
     def test_remove_from_cart(self):
         anasayfa = Anasayfa(self.driver)
 
-        anasayfa.adres_arama_cubuguna_adres_gir()
-        anasayfa.anasayfada_restoran_arat("sarmaşık kebap")
-
-
-        actions = ActionChains(self.driver)
-        restaurant_webelement = WebDriverWait(self.driver,25).until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/yemek/sarmasik-kebap-doner-et-lokantasi-sancaktepe-sarigazi-mah-st-1bb70']")))
-        actions.move_to_element(restaurant_webelement)
-        actions.click(restaurant_webelement)
-        actions.perform()
-
         urunler_liste = WebDriverWait(self.driver,15).until(EC.visibility_of_all_elements_located((By.XPATH,"//div[@class='subtitle-2 name']")))
         urunler_liste[2].click()
 
@@ -80,10 +63,6 @@ class TestCart:
     def test_change_quantity(self):
         anasayfa = Anasayfa(self.driver)
 
-        anasayfa.adres_arama_cubuguna_adres_gir()
-        anasayfa.anasayfada_restoran_arat("sarmaşık kebap")
-
-        anasayfa.restoran_sec_sarmasik_cart_sayfasi_icin()
         
         restaurant = Restaurant(self.driver)
         urunler_liste = restaurant.varsayilan_urunler_liste_ver()

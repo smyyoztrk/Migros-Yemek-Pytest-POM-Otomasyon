@@ -20,8 +20,10 @@ class Anasayfa(Pagebase):
     RESTAURANT_66 = (By.XPATH,"//a[@href='/yemek/66-burger-sancaktepe-meclis-mah-st-1dfa4']")
     RESTORAN_SARMASIK = (By.XPATH,"//a[@href='/yemek/sarmasik-kebap-doner-et-lokantasi-sancaktepe-sarigazi-mah-st-1bb70']")
     SEPET_IKONU = (By.XPATH,"//div[@id='homepage-cart-button']")
-    
-        
+    UYE_OLMADAN_DEVAM_ET_BUTONU = (By.XPATH,"(//span[@class='mdc-button__label'])[3]")
+    RESTORAN_ARAMA_MOTORU = (By.XPATH,"//input[@id='product-search-combobox--trigger']") 
+    TUMUNU_KABULET_BUTONU = (By.XPATH,"//button[@id='accept-all']")
+
     def adres_arama_cubuguna_adres_gir(self):
         adres_girme_input = self.wait_element_visibility_of(30,Anasayfa.ADRES_GIRME_CUBUGU)
         
@@ -34,7 +36,7 @@ class Anasayfa(Pagebase):
         isareledigim_konum_ile_guncelle_butonu.click()
         adresim_dogru_buton = self.wait_element_of_be_clikcable(30,Anasayfa.ADRESIM_DOGRU_BUTONU)
         adresim_dogru_buton.click()
-        tumunu_kabulet_buton = self.wait_element_of_be_clikcable(20,(By.XPATH,"//button[@id='accept-all']"))
+        tumunu_kabulet_buton = self.wait_element_of_be_clikcable(20,Anasayfa.TUMUNU_KABULET_BUTONU)
         tumunu_kabulet_buton.click()
         actions = ActionChains(self.driver)
         actions.move_by_offset(10, 10).click()
@@ -44,14 +46,14 @@ class Anasayfa(Pagebase):
         actions.move_by_offset(10,10).click().perform()
         sleep(2)
     def uye_olmadan_devamet_butonuna_tikla(self):
-        uye_olmadan_devamet_buton = self.wait_element_of_be_clikcable(30,(By.XPATH,"(//span[@class='mdc-button__label'])[3]"))
+        uye_olmadan_devamet_buton = self.wait_element_of_be_clikcable(30,Anasayfa.UYE_OLMADAN_DEVAM_ET_BUTONU)
         uye_olmadan_devamet_buton.click()
     def anasayfada_restoran_arat(self,restoranAdi):
-        anasayfa_arama_motoru = self.wait_element_visibility_of(30,(By.XPATH,"//input[@id='product-search-combobox--trigger']")).click()
+        anasayfa_arama_motoru = self.wait_element_visibility_of(30,Anasayfa.RESTORAN_ARAMA_MOTORU).click()
         sleep(2)
         self.uye_olmadan_devamet_butonuna_tikla()
         sleep(2)
-        anasayfa_arama_motoru = self.wait_element_visibility_of(30,(By.XPATH,"//input[@id='product-search-combobox--trigger']"))
+        anasayfa_arama_motoru = self.wait_element_visibility_of(30,Anasayfa.RESTORAN_ARAMA_MOTORU)
         anasayfa_arama_motoru.send_keys(restoranAdi)
         anasayfa_arama_motoru.send_keys(Keys.ENTER)
 

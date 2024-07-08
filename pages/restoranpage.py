@@ -31,7 +31,7 @@ class Restaurant(Pagebase):
         categoriler_webelement = self.wait_element_visibility_of_all(45,Restaurant.CATEGORİLER)
         categoriler_liste = []
         for i in categoriler_webelement:
-            categoriler_liste.append(i.text)
+            categoriler_liste.append(i.text.strip())
         return categoriler_liste
     
     def menu_listesindeki_icecekler_elementine_tikla(self):
@@ -44,7 +44,7 @@ class Restaurant(Pagebase):
         arama_cubugu_webelement = self.wait_element_visibility_of(30,Restaurant.RESTORAN_ICINDEKI_ARAMA_CUBUGU)
         actions = ActionChains(self.driver)
         actions.move_to_element(arama_cubugu_webelement)
-        arama_cubugu_webelement.send_keys("et burger")
+        arama_cubugu_webelement.send_keys("et döner")
         arama_cubugu_webelement.send_keys(Keys.ENTER)
     def urun_aratinca_listenen_urunleri_ver(self):
         return self.wait_element_visibility_of_all(30,Restaurant.RESTORAN_ICINDEKI_URUN_ARATMADA_LISTELENEN_URUNLER)
