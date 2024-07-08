@@ -15,9 +15,6 @@ from pages.cartpage import Cart
 
 @pytest.mark.usefixtures("setup")
 class TestCart:
-    
-    def wait(self,minute,location):
-        return WebDriverWait(self.driver,minute).until(EC.visibility_of_element_located(location))
     def test_add_to_cart(self):
         anasayfa = Anasayfa(self.driver)
         restaurant = Restaurant(self.driver)
