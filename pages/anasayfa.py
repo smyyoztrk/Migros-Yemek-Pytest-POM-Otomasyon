@@ -18,6 +18,7 @@ class Anasayfa(Pagebase):
     ISARETLEDIGIM_KONUM_ILE_GUNCELLE_BUTONU = (By.XPATH,"(//span[@class='mdc-button__label'])[2]")
     ADRESIM_DOGRU_BUTONU = (By.XPATH,"(//span[@class='mdc-button__label'])[1]")
     RESTAURANT_66 = (By.XPATH,"//a[@href='/yemek/66-burger-sancaktepe-meclis-mah-st-1dfa4']")
+    
     RESTORAN_SARMASIK = (By.XPATH,"//a[@href='/yemek/sarmasik-kebap-doner-et-lokantasi-sancaktepe-sarigazi-mah-st-1bb70']")
     SEPET_IKONU = (By.XPATH,"//div[@id='homepage-cart-button']")
     UYE_OLMADAN_DEVAM_ET_BUTONU = (By.XPATH,"(//span[@class='mdc-button__label'])[3]")
@@ -56,6 +57,7 @@ class Anasayfa(Pagebase):
         anasayfa_arama_motoru = self.wait_element_visibility_of(30,Anasayfa.RESTORAN_ARAMA_MOTORU)
         anasayfa_arama_motoru.send_keys(restoranAdi)
         anasayfa_arama_motoru.send_keys(Keys.ENTER)
+        sleep(2)
 
         
     def restoran_sec_66_restoranı_menu_sayfasi_icin(self):
@@ -65,11 +67,13 @@ class Anasayfa(Pagebase):
         actions.click(restaurant_webelement)
         actions.perform()
     def restoran_sec_sarmasik_cart_sayfasi_icin(self):
-        restaurant_webelement = self.wait_element_of_presence(30,Anasayfa.RESTORAN_SARMASIK)
-        actions = ActionChains(self.driver)
-        actions.move_to_element(restaurant_webelement)
-        actions.click(restaurant_webelement)
-        actions.perform()
+        restaurant_webelement = self.wait_element_of_be_clikcable(50,Anasayfa.RESTORAN_SARMASIK)
+        # actions = ActionChains(self.driver)
+        # actions.move_to_element(restaurant_webelement)
+        # actions.click(restaurant_webelement)
+        # actions.perform()
+        sleep(2)
+        restaurant_webelement.click()
     
 
     def sepet_iconuna_tikla(self):
